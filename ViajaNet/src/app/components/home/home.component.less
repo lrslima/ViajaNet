@@ -1,26 +1,189 @@
-html { 
-    background: url(/assets/img/background-1.jpg)  no-repeat fixed; 
-    // -webkit-background-size: cover;
-    // -moz-background-size: cover;
-    // -o-background-size: cover;
-    // background-size: cover;
-    // width: 100vw;
-    // height: 100vh;
+#background {
+  background: url(/assets/img/background-1.jpg) no-repeat;
+  width: 100%;
+  height: 100vh;
+  background-size: 100%;
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+.content-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  & .square {
+    background-color: #0074c9;
+  }
+}
 
 
-    background-size: 100%;
-    width: 100vw;
+
+span {
+  color: #FFF;
+}
+
+.passagens {
+  background-color: #004787;
+  color: #FFF;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-search {
+  background-color: #4baf00;
+  border: none;
+  opacity: 0.8;
+  color: #FFF;
+  width: 100%;
+  height: 50px;
+}
+
+.direction-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.content label {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content input {
+  border-radius: 3px;
+  border: none;
+  height: 40px;
+}
+
+.filter select {
+  background-color: #004787;
+  width: 100px;
+  color: #FFF;
+  height: 40px;
+  border: none;
+  border-radius: 3px;
+}
+
+@media screen and (min-width:769px) {
+  #group-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .group-date {
+    display: flex;
+    flex-direction: row;
+
+  }
+
+  .group-date input {
+    width: 150px;
+    margin-left: 10px;
+
+  }
+
+  .search-title {
+    color: #FFF;
+    font-size: 28px;
+    margin-top: 20px;
+  }
+
+  .group-date span,
+  .group-location span {
+    margin-left: 10px;
+
+  }
+
+  .group-location {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .group-location input {
+    width: 320px;
+    margin-left: 10px;
+
+  }
+
+  .filter select,
+  .filter span {
+    margin-left: 10px;
+  }
+
+  .passagens {
+    width: 30%;
+    background-color: #0074c9;
+    color: #FFF;
+    font-size: 23px;
+    font-weight: 700
+  }
+
+  .space {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .btn-search {
+    font-size: 26px;
+   font-weight:700;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  #background {
+    background: url(/assets/img/background-mobile.jpg) no-repeat;
+    width: 100%;
     height: 100vh;
     background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    overflow-y: hidden;
-
+    background-size: cover;
   }
 
-  .title {
-    color: #ffffff;
-    font-family: 'Fjalla One', sans-serif;
+  .search-title {
+    display: none;
   }
 
-  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .econometro {
+    display: none;
+  }
+}
+@media screen and (max-width:374px){
+  .filter select{
+    background-color: #004787;
+    width: 70px;
+    border-radius: 3px;
+  }
+}
+@media screen and (min-width:992px){
+  .group-date input {
+    width: 200px;
+  }
+  .group-location input {
+    width: 440px;
+  }
+}
+@media screen and (min-width:1200px){
+  .group-date input {
+    width: 300px;
+  }
+  .group-location input {
+    width: 530px;
+  }
+  .passagens {
+    font-size: 26px;
+  }
+
+
+}

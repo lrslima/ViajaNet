@@ -5,97 +5,98 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <title>ViajaNet</title>
 </head>
 
 <body>
-  <div>
-    <fieldset>
-      <form class>
-          <strong class="title">Encontre os melhores preços e boa viagem!</strong>
-          <label>
-              <input type="radio">
-              <span>Ida e Volta</span>
-          </label>
-          <label id="lblOrigem">
-              <input type="text" id="txtOrigem">
-              <span id="spanOrigem">Origem</span>
-          </label>
+  <div id="background">
+      <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="content-center">
+          <div class="passagens">
+            <span>Passagens Aéreas</span>
+          </div>
+          <div class="square">
+            <div class="container">
+              <fieldset>
+                <form class='form-column'>
+                  <strong class="search-title">Encontre os melhores preços e boa viagem!</strong> <br>
+                  <div class="space">
+                    <div>
+                      <input type="radio">
+                      <span>Ida e Volta</span>
+                    </div>
+                    <img src="../../../assets/img/econometro.png" alt="" srcset="" class="econometro">
+                  </div>
+                  <div class="content">
+                    <div class="group-location">
+                      <label>
+                        <span>Informe sua origem</span>
+                        <input type="text" #origem placeholder="Cidade ou aeroporto" (keyup)="fnBuscaLocal(origem.value)">
+                      </label>
 
-          <label id="lblDestino"> 
-              <input type="text" id="txtDestino">
-              <span id="spanDestino">Destino</span>
-          </label>
+                      <label>
+                        <span>Informe seu Destino</span>
+                        <input type="text" #destino placeholder="Cidade ou aeroporto" (keyup)="fnBuscaLocal(destino.value)">
+                      </label>
+                    </div>
 
-          <label>
-              <input type="date">
-              <span>Data da ida</span>
-          </label>
+                    <div id="group-row">
+                      <div class="group-date">
+                        <label>
+                          <span>Data da ida</span>
+                          <input type="date">
+                        </label>
 
-          <label>
-              <input type="date">
-              <span>Data da Volta</span>
-          </label>
+                        <label>
+                          <span>Data da Volta</span>
+                          <input type="date">
+                        </label>
+                      </div>
+                      <div class="direction-row filter">
+                        <label>
+                          <span>Adultos</span>
+                          <select name="" id="">
+                            <option></option>
+                          </select>
+                        </label>
 
-          <label>
-              <span>Adultos</span>
-              <select name="" id="">
-                <option selected hidden>Selecione</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-              </select>
-          </label>
+                        <label>
+                          <span>Crianças</span>
+                          <select name="" id="">
+                            <option></option>
+                          </select>
+                        </label>
 
-          <label>
-              <span>Crianças</span>
-              <select name="" id="">
-                <option selected hidden>Selecione</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-              </select>
-          </label>
+                        <label>
+                          <span>Bebês</span>
+                          <select name="" id="">
+                            <option></option>
+                          </select>
+                        </label>
+                      </div>
+                    </div>
 
-          <label>
-              <span>Bebês</span>
-              <select name="" id="">
-                <option selected hidden>Selecione</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-              </select>
-          </label>
+                  </div>
 
-          <label>
-              <span>Pesquisar</span>
-              <button type="submit">
-                Pesquisar
-              </button>
-          </label>
+                </form>
+              </fieldset>
+            </div>
+          </div>
+          <button type="submit" class="btn-search">
+            Pesquisar
+          </button>
+        </div>
 
+      </div>
 
-      </form>
-    </fieldset>
+    </div>
+    
   </div>
+</div>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>

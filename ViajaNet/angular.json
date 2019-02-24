@@ -27,8 +27,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.less",
-              "https://fonts.googleapis.com/css?family=Fjalla+One"
+              "src/styles.less"
             ],
             "scripts": []
           },
