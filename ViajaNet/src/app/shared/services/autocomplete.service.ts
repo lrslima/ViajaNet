@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core';
-import { map, catchError } from 'rxjs/operators';
-import { throwError, of } from 'rxjs';
+import { map, catchError, switchMap } from 'rxjs/operators';
+import { throwError, of, bindNodeCallback } from 'rxjs';
 
 
 @Injectable({
@@ -19,21 +19,21 @@ export class AutoCompleteService {
     apiUrl = "https://www.viajanet.com.br/resources/api/Autocomplete/"
     param = "";
 
-    // url = this.apiUrl + this.param;
-
-
-    httpOptions = {
-        headers: new HttpHeaders({ 'Content-Type': 'text/xml' })
-    };
+    xml: string = "";
 
     list(param: string) {
 
+        this._http.get(this.apiUrl + param, { responseType: 'text' }).subscribe(response => {
+            console.log(response);
+            this.xml = response;
+        });
 
-    return this._http.get(this.apiUrl + param, { headers: this.httpOptions })
-        .pipe(map((response: any) =>
-            response != null ? response : null),
-            catchError(error =>
-                this.handleError(error)));
+        if (this.xml == "") {
+            return undefined
+        }
+        else {
+            return this.xml;
+        }
     }
 
     private handleError(error: any) {

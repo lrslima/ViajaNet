@@ -5,97 +5,122 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <title>ViajaNet</title>
 </head>
 
 <body>
-  <div>
-    <fieldset>
-      <form class>
-          <strong class="title">Encontre os melhores preços e boa viagem!</strong>
-          <label>
-              <input type="radio">
-              <span>Ida e Volta</span>
-          </label>
-          <label id="lblOrigem">
-              <input type="text" id="txtOrigem">
-              <span id="spanOrigem">Origem</span>
-          </label>
+  <div id="background">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="content-center">
+            <div class="passagens">
+              <span>Passagens Aéreas</span>
+            </div>
+            <div class="square">
+              <div class="container">
+                <fieldset>
+                  <form class='form-column'>
+                    <strong class="search-title">Encontre os melhores preços e boa viagem!</strong> <br>
+                    <div class="space">
+                      <div>
+                        <input id="rdOpcao" type="radio" [checked]="true">
+                        <span>Ida e Volta</span>
+                      </div>
+                      <img src="../../../assets/img/econometro.png" alt="" srcset="" class="econometro">
+                    </div>
+                    <div class="content">
+                      <div class="group-location">
+                        <div class="divOrigem">
+                          <span>Informe sua origem</span>
+                          <input type="text" #origem placeholder="Cidade ou aeroporto" (keyup)="fnBuscaLocal(origem.value)">
+                          <div *ngFor="let local of localidades">
+                            <div class="list">{{local}}</div>
+                          </div>
+                        </div>
 
-          <label id="lblDestino"> 
-              <input type="text" id="txtDestino">
-              <span id="spanDestino">Destino</span>
-          </label>
+                        <div class="divDestino">
+                          <span>Informe seu Destino</span>
+                          <input type="text" #destino placeholder="Cidade ou aeroporto" (keyup)="fnBuscaLocal(destino.value)">
+                        </div>
+                      </div>
 
-          <label>
-              <input type="date">
-              <span>Data da ida</span>
-          </label>
+                      <div id="group-row">
+                        <div class="group-date">
+                          <label>
+                            <span>Data da Ida</span>
 
-          <label>
-              <input type="date">
-              <span>Data da Volta</span>
-          </label>
+                            <div class="divDataIda">
+                              <!-- <mat-form-field> -->
+                              <input [disabled]="isDisabled" matInput [matDatepicker]="picker">
+                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker #picker></mat-datepicker>
+                              <!-- </mat-form-field> -->
+                            </div>
 
-          <label>
-              <span>Adultos</span>
-              <select name="" id="">
-                <option selected hidden>Selecione</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-              </select>
-          </label>
+                            <!-- <mat-form-field> -->
+                            <!-- <input matInput [matDatepicker]="picker">
+                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker #picker></mat-datepicker> -->
+                            <!-- </mat-form-field> -->
+                          </label>
 
-          <label>
-              <span>Crianças</span>
-              <select name="" id="">
-                <option selected hidden>Selecione</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-              </select>
-          </label>
+                          <label>
+                            <span>Data da Volta</span>
+                            <div class="divDataVolta">
+                              <!-- <mat-form-field> -->
+                              <input matInput [matDatepicker]="picker2">
+                              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                              <mat-datepicker #picker2></mat-datepicker>
+                              <!-- </mat-form-field> -->
+                            </div>
+                          </label>
+                        </div>
+                        <div class="direction-row filter">
+                          <label>
+                            <span>Adultos</span>
+                            <select name="" id="">
+                              <option *ngFor="let adulto of listaAdultos" value="adulto" [selected]="0">{{adulto}} Adulto(s)</option>
+                            </select>
+                          </label>
 
-          <label>
-              <span>Bebês</span>
-              <select name="" id="">
-                <option selected hidden>Selecione</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-              </select>
-          </label>
+                          <label>
+                            <span>Crianças</span>
+                            <select name="" id="">
+                              <option value="0" selected>Nenhuma</option>
+                              <option *ngFor="let crianca of listaCriancas" value="crianca">{{crianca}} criança(s)</option>
+                            </select>
+                          </label>
 
-          <label>
-              <span>Pesquisar</span>
-              <button type="submit">
-                Pesquisar
-              </button>
-          </label>
+                          <label>
+                            <span>Bebês</span>
+                            <select name="" id="">
+                                <option value="0" selected>Nenhuma</option>
+                                <option *ngFor="let bebes of listaBebes" value="bebes" [selected]="0">{{bebes}} bebê(s)</option>
+                            </select>
+                          </label>
+                        </div>
+                      </div>
 
+                    </div>
 
-      </form>
-    </fieldset>
+                  </form>
+                </fieldset>
+              </div>
+            </div>
+            <button type="submit" class="btn-search">
+              Pesquisar
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
   </div>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>
