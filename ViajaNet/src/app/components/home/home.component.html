@@ -11,91 +11,115 @@
 
 <body>
   <div id="background">
-      <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="content-center">
-          <div class="passagens">
-            <span>Passagens Aéreas</span>
-          </div>
-          <div class="square">
-            <div class="container">
-              <fieldset>
-                <form class='form-column'>
-                  <strong class="search-title">Encontre os melhores preços e boa viagem!</strong> <br>
-                  <div class="space">
-                    <div>
-                      <input type="radio">
-                      <span>Ida e Volta</span>
-                    </div>
-                    <img src="../../../assets/img/econometro.png" alt="" srcset="" class="econometro">
-                  </div>
-                  <div class="content">
-                    <div class="group-location">
-                      <label>
-                        <span>Informe sua origem</span>
-                        <input type="text" #origem placeholder="Cidade ou aeroporto" (keyup)="fnBuscaLocal(origem.value)">
-                      </label>
-
-                      <label>
-                        <span>Informe seu Destino</span>
-                        <input type="text" #destino placeholder="Cidade ou aeroporto" (keyup)="fnBuscaLocal(destino.value)">
-                      </label>
-                    </div>
-
-                    <div id="group-row">
-                      <div class="group-date">
-                        <label>
-                          <span>Data da ida</span>
-                          <input type="date">
-                        </label>
-
-                        <label>
-                          <span>Data da Volta</span>
-                          <input type="date">
-                        </label>
-                      </div>
-                      <div class="direction-row filter">
-                        <label>
-                          <span>Adultos</span>
-                          <select name="" id="">
-                            <option></option>
-                          </select>
-                        </label>
-
-                        <label>
-                          <span>Crianças</span>
-                          <select name="" id="">
-                            <option></option>
-                          </select>
-                        </label>
-
-                        <label>
-                          <span>Bebês</span>
-                          <select name="" id="">
-                            <option></option>
-                          </select>
-                        </label>
-                      </div>
-                    </div>
-
-                  </div>
-
-                </form>
-              </fieldset>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="content-center">
+            <div class="passagens">
+              <span>Passagens Aéreas</span>
             </div>
+            <div class="square">
+              <div class="container">
+                <fieldset>
+                  <form class='form-column'>
+                    <strong class="search-title">Encontre os melhores preços e boa viagem!</strong> <br>
+                    <div class="space">
+                      <div>
+                        <input id="rdOpcao" type="radio" [checked]="true">
+                        <span>Ida e Volta</span>
+                      </div>
+                      <img src="../../../assets/img/econometro.png" alt="" srcset="" class="econometro">
+                    </div>
+                    <div class="content">
+                      <div class="group-location">
+                        <div class="divOrigem">
+                          <span>Informe sua origem</span>
+                          <input type="text" #origem placeholder="Cidade ou aeroporto" (keyup)="fnBuscaLocal(origem.value)">
+                          <div *ngFor="let local of localidades">
+                            <div class="list">{{local}}</div>
+                          </div>
+                        </div>
+
+                        <div class="divDestino">
+                          <span>Informe seu Destino</span>
+                          <input type="text" #destino placeholder="Cidade ou aeroporto" (keyup)="fnBuscaLocal(destino.value)">
+                        </div>
+                      </div>
+
+                      <div id="group-row">
+                        <div class="group-date">
+                          <label>
+                            <span>Data da Ida</span>
+
+                            <div class="divDataIda">
+                              <!-- <mat-form-field> -->
+                              <input [disabled]="isDisabled" matInput [matDatepicker]="picker">
+                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker #picker></mat-datepicker>
+                              <!-- </mat-form-field> -->
+                            </div>
+
+                            <!-- <mat-form-field> -->
+                            <!-- <input matInput [matDatepicker]="picker">
+                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker #picker></mat-datepicker> -->
+                            <!-- </mat-form-field> -->
+                          </label>
+
+                          <label>
+                            <span>Data da Volta</span>
+                            <div class="divDataVolta">
+                              <!-- <mat-form-field> -->
+                              <input matInput [matDatepicker]="picker2">
+                              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                              <mat-datepicker #picker2></mat-datepicker>
+                              <!-- </mat-form-field> -->
+                            </div>
+                          </label>
+                        </div>
+                        <div class="direction-row filter">
+                          <label>
+                            <span>Adultos</span>
+                            <select name="" id="">
+                              <option *ngFor="let adulto of listaAdultos" value="adulto" [selected]="0">{{adulto}} Adulto(s)</option>
+                            </select>
+                          </label>
+
+                          <label>
+                            <span>Crianças</span>
+                            <select name="" id="">
+                              <option value="0" selected>Nenhuma</option>
+                              <option *ngFor="let crianca of listaCriancas" value="crianca">{{crianca}} criança(s)</option>
+                            </select>
+                          </label>
+
+                          <label>
+                            <span>Bebês</span>
+                            <select name="" id="">
+                                <option value="0" selected>Nenhuma</option>
+                                <option *ngFor="let bebes of listaBebes" value="bebes" [selected]="0">{{bebes}} bebê(s)</option>
+                            </select>
+                          </label>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </form>
+                </fieldset>
+              </div>
+            </div>
+            <button type="submit" class="btn-search">
+              Pesquisar
+            </button>
           </div>
-          <button type="submit" class="btn-search">
-            Pesquisar
-          </button>
+
         </div>
 
       </div>
 
     </div>
-    
   </div>
-</div>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 

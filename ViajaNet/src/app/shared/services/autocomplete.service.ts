@@ -24,6 +24,7 @@ export class AutoCompleteService {
     list(param: string) {
 
         this._http.get(this.apiUrl + param, { responseType: 'text' }).subscribe(response => {
+            console.log(response);
             this.xml = response;
         });
 
