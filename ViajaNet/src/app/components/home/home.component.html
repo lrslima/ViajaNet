@@ -81,6 +81,7 @@
                           <label>
                             <span>Adultos</span>
                             <select name="" id="">
+                              <option  value="1" [selected]="1">1 Adulto</option>
                               <option *ngFor="let adulto of listaAdultos" value="adulto" [selected]="0">{{adulto}} Adulto(s)</option>
                             </select>
                           </label>
@@ -89,7 +90,8 @@
                             <span>Crianças</span>
                             <select name="" id="">
                               <option value="0" selected>Nenhuma</option>
-                              <option *ngFor="let crianca of listaCriancas" value="crianca">{{crianca}} criança(s)</option>
+                              <option  value="1" [selected]="1">1 criança</option>
+                              <option *ngFor="let crianca of listaCriancas" value="crianca">{{crianca}} crianças</option>
                             </select>
                           </label>
 
@@ -97,7 +99,8 @@
                             <span>Bebês</span>
                             <select name="" id="">
                                 <option value="0" selected>Nenhuma</option>
-                                <option *ngFor="let bebes of listaBebes" value="bebes" [selected]="0">{{bebes}} bebê(s)</option>
+                                <option  value="1" [selected]="1">1 bebê</option>
+                                <option *ngFor="let bebes of listaBebes" value="bebes" [selected]="0">{{bebes}} bebês</option>
                             </select>
                           </label>
                         </div>

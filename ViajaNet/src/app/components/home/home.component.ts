@@ -28,25 +28,11 @@ export class HomeComponent implements OnInit {
   listaBebes: number[] = new Array<number>();
 
   ngOnInit() {
-    this.listaAdultos = [1,2,3,4,5,6,7,8,9]
-    this.listaCriancas = [1,2,3,4,5,6,7,8,9]
-    this.listaBebes = [1,2,3,4,5,6,7,8,9]
+    this.listaAdultos = [2,3,4,5,6,7,8,9]
+    this.listaCriancas = [2,3,4,5,6,7,8,9]
+    this.listaBebes = [2,3,4,5,6,7,8,9]
 
   }
-
-  // idaEvolta(evt) {
-  //   var target = evt.target;
-  //   if (target.checked) {
-  //     this.somenteIda = false;
-  //   }
-  // }
-    // $("#rdOpcao").on("click", function() {
-
-    //     })
-
-  
-
-
 
   fnBuscaLocal(texto: string) {
 
