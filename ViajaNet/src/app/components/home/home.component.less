@@ -23,7 +23,8 @@
   }
 }
 
-.divListOrigem, .divListDestino {
+.divListOrigem,
+.divListDestino {
   max-height: 100px;
   overflow-y: scroll;
 
@@ -116,11 +117,25 @@ span {
   }
 }
 
+@media screen and (min-width: 375px) {
+
+  .divListOrigem,
+  .divListDestino {
+    .list {
+      margin-left: 0px;
+    }
+  }
+}
+
 @media screen and (min-width:769px) {
   #group-row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  .list {
+    margin-left: 10px;
   }
 
   .group-date {
@@ -192,6 +207,10 @@ span {
     display: none;
   }
 
+  .list {
+    margin-left: 0px;
+  }
+
   form {
     display: flex;
     flex-direction: column;
@@ -224,6 +243,10 @@ span {
   }
 }
 
+.list {
+  margin-left: 0px;
+}
+
 @media screen and (min-width:992px) {
   .group-date {
     input {
@@ -243,6 +266,10 @@ span {
     input {
       width: 300px;
     }
+  }
+
+  .list {
+    margin-left: 0px;
   }
 
   .group-location {
@@ -270,6 +297,10 @@ span {
     justify-content: space-between;
   }
 
+  .list {
+    margin-left: 0px;
+  }
+
   .content input {
     border-radius: 3px;
     border: none;
@@ -277,7 +308,8 @@ span {
     width: 100%;
   }
 
-  .divListOrgeim, .divListDestino .list {
+  .divListOrgeim,
+  .divListDestino .list {
     margin-left: 0px;
   }
 }

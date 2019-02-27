@@ -23,21 +23,28 @@ export class AutoCompleteService {
 
     list(param: string) {
 
-        this._http.get(this.apiUrl + param, { responseType: 'text' }).subscribe(response => {
-            this.xml = response;
-            catchError(error => 
-                this.handleError(error)); 
-        });
+        try {
+            this._http.get(this.apiUrl + param, { responseType: 'text' }).subscribe(response => {
 
-        if (this.xml == "") {
-            return undefined
+                try {
+                    this.xml = response;
+                }
+                catch(error)
+                {
+                    return error.message();
+                }
+            });
         }
-        else {
-            return this.xml;
+        catch(error){
+            return error.message();
         }
+
+
+        return this.xml;
     }
 
     private handleError(error: any) {
+        this.xml = "";
         let message: string = "";
 
         if (error.status === 400) {

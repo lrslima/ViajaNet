@@ -78,20 +78,19 @@ export class HomeComponent implements OnInit {
 
     }
     else {
-      this.localidadesDestino = [];
+      this.localidadesOrigem = [];
+      $(".content-list").css("display", "none");
     }
   }
 
-  fnBuscaLocalDestino(texto: string){
+  fnBuscaLocalDestino(texto: string) {
+
+
     if (texto.trim().length >= 3) {
       this.xml = "";
+      this.localidadesDestino = [];
       this.xml = this._autocmpleteService.list(texto);
 
-      for (var i = this.localidadesDestino.length; i > 0; i--) {
-
-        this.localidadesDestino.pop();
-
-      }
       if (this.xml != undefined) {
 
         this.valido = true;
@@ -104,26 +103,32 @@ export class HomeComponent implements OnInit {
           this.localidadesDestino.push(element.textContent);
           if (element.textContent.includes("Todos")) {
             var index = this.localidadesDestino.indexOf(element.textContent);
-            this.arraymove(this.localidadesDestino, index, 0)
+            this.arraymove(this.localidadesOrigem, index, 0)
           }
         });
 
       }
 
     }
+    else {
+      this.localidadesDestino = [];
+      $(".content-list").css("display", "none");
+    }
   }
 
-  addLocation(evt){
+  addLocation(evt) {
     $("#origem").val("");
-     $("#origem").val(evt);
-     $(".content-list").css("display", "none");
+    $("#origem").val(evt);
+    $(".content-list").css("display", "none");
   }
 
   Pesquisar() {
     if (this.form.invalid) {
       alert("inválido")
     }
-    alert("válido");
+    else {
+      alert("válido")
+    }
   }
 
   arraymove(arr, fromIndex, toIndex) {
