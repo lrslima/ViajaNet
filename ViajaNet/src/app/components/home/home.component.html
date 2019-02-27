@@ -34,17 +34,17 @@
                       <div class="group-location">
                         <div class="divOrigem">
                           <span>Informe sua origem</span>
-                          <input type="text" #origem placeholder="Cidade ou aeroporto" (keyup)="fnBuscaLocalOrigem(origem.value)">
+                          <input type="text" id="origem" #origem placeholder="Cidade ou aeroporto" (keyup)="fnBuscaLocalOrigem(origem.value)">
                           <div class="divListOrigem">
                             <div *ngFor="let local of localidadesOrigem" class="content-list">
-                              <div class="list">{{local}}</div>
+                              <div id="location" [attr.value]="local" (click)="addLocation(local)" class="list">{{local}}</div>
                             </div>
                           </div>
                         </div>
 
                         <div class="divDestino">
                           <span>Informe seu Destino</span>
-                          <input type="text" #destino placeholder="Cidade ou aeroporto" (keyup)="fnBuscaLocalDestino(destino.value)">
+                          <input type="text" id="" #destino placeholder="Cidade ou aeroporto" (keyup)="fnBuscaLocalDestino(destino.value)">
                           <div class="divListDestino">
                             <div *ngFor="let local of localidadesDestino" class="content-list">
                               <div class="list">{{local}}</div>

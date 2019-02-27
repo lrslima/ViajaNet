@@ -113,6 +113,12 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  addLocation(evt){
+    $("#origem").val("");
+     $("#origem").val(evt);
+     $(".content-list").css("display", "none");
+  }
+
   Pesquisar() {
     if (this.form.invalid) {
       alert("inválido")
