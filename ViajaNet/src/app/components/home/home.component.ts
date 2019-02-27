@@ -58,11 +58,6 @@ export class HomeComponent implements OnInit {
       this.localidadesDestino = [];
       this.xml = this._autocmpleteService.list(texto);
 
-      // for (var i = this.localidadesOrigem.length; i > 0; i--) {
-
-      //   this.localidadesOrigem.pop();
-
-      // }
       if (this.xml != undefined) {
 
         this.valido = true;
@@ -120,12 +115,6 @@ export class HomeComponent implements OnInit {
 
   Pesquisar() {
     if (this.form.invalid) {
-      // Swal.fire({
-      //   type: 'error',
-      //   title: 'Oops...',
-      //   text: 'Something went wrong!',
-      //   footer: '<a href>Why do I have this issue?</a>'
-      // })
       alert("inválido")
     }
     alert("válido");
