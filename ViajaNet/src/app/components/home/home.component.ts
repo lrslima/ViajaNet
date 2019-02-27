@@ -1,6 +1,8 @@
 import { Component, OnInit, NgModule, ViewChild, ElementRef } from '@angular/core';
 import { AutoCompleteService } from 'src/app/shared/services/autocomplete.service';
 import * as $ from 'jquery';
+import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
+// import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 @Component({
   selector: 'app-home',
@@ -14,54 +16,119 @@ import * as $ from 'jquery';
 export class HomeComponent implements OnInit {
 
   constructor(
+    private formBuilder: FormBuilder,
     private _autocmpleteService: AutoCompleteService
   ) { }
 
   xml: string;
   picker = new Date();
-  localidades: string[] = new Array<string>();
+  localidadesOrigem: string[] = new Array<string>();
+  localidadesDestino: string[] = new Array<string>();
   siglas: string[] = new Array<string>();
   ids: string[] = new Array<string>();
   somenteIda: boolean;
   listaAdultos: number[] = new Array<number>();
   listaCriancas: number[] = new Array<number>();
   listaBebes: number[] = new Array<number>();
+  valido: boolean;
+  form: FormGroup;
 
   ngOnInit() {
-    this.listaAdultos = [2,3,4,5,6,7,8,9]
-    this.listaCriancas = [2,3,4,5,6,7,8,9]
-    this.listaBebes = [2,3,4,5,6,7,8,9]
+    this.listaAdultos = [2, 3, 4, 5, 6, 7, 8, 9]
+    this.listaCriancas = [2, 3, 4, 5, 6, 7, 8, 9]
+    this.listaBebes = [2, 3, 4, 5, 6, 7, 8, 9]
+
+    this.form = this.formBuilder.group({
+      origem: ['', Validators.required],
+      destino: ['', Validators.required],
+      dataIda: ['', Validators.required],
+      dataVolta: ['', Validators.required],
+      dropAdultos: ['', Validators.required],
+      dropCriancas: ['', Validators.required],
+      dropBebes: ['', Validators.required],
+    })
 
   }
 
-  fnBuscaLocal(texto: string) {
+  fnBuscaLocalOrigem(texto: string) {
+
 
     if (texto.trim().length >= 3) {
       this.xml = "";
+      this.localidadesDestino = [];
       this.xml = this._autocmpleteService.list(texto);
 
-      for (var i = this.localidades.length; i > 0; i--) {
+      // for (var i = this.localidadesOrigem.length; i > 0; i--) {
 
-        this.localidades.pop();
+      //   this.localidadesOrigem.pop();
 
-      }
+      // }
       if (this.xml != undefined) {
+
+        this.valido = true;
 
         var parser = new DOMParser();
         var doc = parser.parseFromString(this.xml, "application/xml");
         var nameArray = Array.from(doc.querySelectorAll('Name'));
 
         nameArray.forEach(element => {
-          this.localidades.push(element.textContent);
+          this.localidadesOrigem.push(element.textContent);
           if (element.textContent.includes("Todos")) {
-            var index = this.localidades.indexOf(element.textContent);
-            this.arraymove(this.localidades, index, 0)
+            var index = this.localidadesOrigem.indexOf(element.textContent);
+            this.arraymove(this.localidadesOrigem, index, 0)
           }
         });
 
       }
 
     }
+    else {
+      this.localidadesDestino = [];
+    }
+  }
+
+  fnBuscaLocalDestino(texto: string){
+    if (texto.trim().length >= 3) {
+      this.xml = "";
+      this.xml = this._autocmpleteService.list(texto);
+
+      for (var i = this.localidadesDestino.length; i > 0; i--) {
+
+        this.localidadesDestino.pop();
+
+      }
+      if (this.xml != undefined) {
+
+        this.valido = true;
+
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(this.xml, "application/xml");
+        var nameArray = Array.from(doc.querySelectorAll('Name'));
+
+        nameArray.forEach(element => {
+          this.localidadesDestino.push(element.textContent);
+          if (element.textContent.includes("Todos")) {
+            var index = this.localidadesDestino.indexOf(element.textContent);
+            this.arraymove(this.localidadesDestino, index, 0)
+          }
+        });
+
+      }
+
+    }
+  }
+
+  Pesquisar() {
+    if (this.form.invalid) {
+      // Swal.fire({
+      //   type: 'error',
+      //   title: 'Oops...',
+      //   text: 'Something went wrong!',
+      //   footer: '<a href>Why do I have this issue?</a>'
+      // })
+      alert("inválido")
+    }
+    alert("válido");
   }
 
   arraymove(arr, fromIndex, toIndex) {

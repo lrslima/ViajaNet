@@ -34,15 +34,22 @@
                       <div class="group-location">
                         <div class="divOrigem">
                           <span>Informe sua origem</span>
-                          <input type="text" #origem placeholder="Cidade ou aeroporto" (keyup)="fnBuscaLocal(origem.value)">
-                          <div *ngFor="let local of localidades">
-                            <div class="list">{{local}}</div>
+                          <input type="text" #origem placeholder="Cidade ou aeroporto" (keyup)="fnBuscaLocalOrigem(origem.value)">
+                          <div class="divListOrigem">
+                            <div *ngFor="let local of localidadesOrigem" class="content-list">
+                              <div class="list">{{local}}</div>
+                            </div>
                           </div>
                         </div>
 
                         <div class="divDestino">
                           <span>Informe seu Destino</span>
-                          <input type="text" #destino placeholder="Cidade ou aeroporto" (keyup)="fnBuscaLocal(destino.value)">
+                          <input type="text" #destino placeholder="Cidade ou aeroporto" (keyup)="fnBuscaLocalDestino(destino.value)">
+                          <div class="divListDestino">
+                            <div *ngFor="let local of localidadesDestino" class="content-list">
+                              <div class="list">{{local}}</div>
+                            </div>
+                          </div>
                         </div>
                       </div>
 
@@ -81,8 +88,8 @@
                           <label>
                             <span>Adultos</span>
                             <select name="" id="">
-                              <option  value="1" [selected]="1">1 Adulto</option>
-                              <option *ngFor="let adulto of listaAdultos" value="adulto" [selected]="0">{{adulto}} Adulto(s)</option>
+                              <option *ngFor="let adulto of listaAdultos" value="adulto" [selected]="0">{{adulto}}
+                                Adulto(s)</option>
                             </select>
                           </label>
 
@@ -90,17 +97,15 @@
                             <span>Crianças</span>
                             <select name="" id="">
                               <option value="0" selected>Nenhuma</option>
-                              <option  value="1" [selected]="1">1 criança</option>
-                              <option *ngFor="let crianca of listaCriancas" value="crianca">{{crianca}} crianças</option>
+                              <option *ngFor="let crianca of listaCriancas" value="crianca">{{crianca}} criança(s)</option>
                             </select>
                           </label>
 
                           <label>
                             <span>Bebês</span>
                             <select name="" id="">
-                                <option value="0" selected>Nenhuma</option>
-                                <option  value="1" [selected]="1">1 bebê</option>
-                                <option *ngFor="let bebes of listaBebes" value="bebes" [selected]="0">{{bebes}} bebês</option>
+                              <option value="0" selected>Nenhuma</option>
+                              <option *ngFor="let bebes of listaBebes" value="bebes" [selected]="0">{{bebes}} bebê(s)</option>
                             </select>
                           </label>
                         </div>
