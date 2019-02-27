@@ -41,7 +41,6 @@ export class AutoCompleteService {
         let message: string = "";
 
         if (error.status === 400) {
-            // return error.error.result;
             return of(error.message);
         }
 
