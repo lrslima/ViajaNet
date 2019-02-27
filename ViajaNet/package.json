@@ -29,6 +29,7 @@
     "npm": "^6.8.0",
     "rxjs": "~6.2.0",
     "rxjs-operators": "^1.0.7",
+    "sweetalert2": "^8.2.4",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

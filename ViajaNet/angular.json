@@ -27,10 +27,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.less"
+              "src/styles.less",
+              "/node_modules/sweetalert2.min.css"
             ],
             "scripts": [
-              "./node_modules/jquery/dist/jquery.min.js" 
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/sweetalert2.all.min.js",
+              "https://cdn.jsdelivr.net/npm/promise-polyfill"
             ]
           },
           "configurations": {
