@@ -1,24 +1,315 @@
-html { 
-    background: url(/assets/img/background-1.jpg)  no-repeat fixed; 
-    // -webkit-background-size: cover;
-    // -moz-background-size: cover;
-    // -o-background-size: cover;
-    // background-size: cover;
-    // width: 100vw;
-    // height: 100vh;
+@color_1: #FFF;
+@background_color_1: #004787;
+@background_color_2: #4baf00;
+@background_color_3: #0074c9;
 
+#background {
+  background: url(/assets/img/background-1.jpg) no-repeat;
+  width: 100%;
+  height: 100vh;
+  background-size: 100%;
+  background-size: cover;
+  overflow-x: hidden;
+}
 
-    background-size: 100%;
-    width: 100vw;
-    height: 100vh;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    overflow-y: hidden;
+.content-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
 
+  & .square {
+    background-color: #0074c9;
+  }
+}
+
+.divListOrigem,
+.divListDestino {
+  max-height: 100px;
+  overflow-y: scroll;
+
+  & .list {
+    background-color: @color_1;
+    border: 1px solid #DDD;
+    padding: 5px;
+    font-weight: 500;
+    margin-left: 10px;
   }
 
+  &>.list:hover {
+    background-color: rgb(159, 212, 243);
+    border: 1px solid #4aaafd;
+    color: #004787;
+  }
+}
+
+span {
+  color: @color_1;
+}
+
+.divDataIda,
+.divDataVolta {
+  position: relative;
+  background-color: @color_1;
+  border-radius: 3px;
+  border: none;
+  height: 40px;
+  margin-left: 10px;
+
+  &>input {
+    background-color: transparent;
+  }
+
+  &>input:focus {
+    border: none;
+  }
+}
 
 
 
-  
+.passagens {
+  background-color: @background_color_1;
+  color: @color_1;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-search {
+  background-color: @background_color_2;
+  border: none;
+  opacity: 0.8;
+  color: @color_1;
+  width: 100%;
+  height: 50px;
+}
+
+.direction-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  label {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input {
+    border-radius: 3px;
+    border: none;
+    height: 40px;
+  }
+}
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+
+  select {
+    background-color: @background_color_1;
+    width: 100px;
+    color: @color_1;
+    height: 40px;
+    border: none;
+    border-radius: 3px;
+  }
+}
+
+@media screen and (min-width: 375px) {
+
+  .divListOrigem,
+  .divListDestino {
+    .list {
+      margin-left: 0px;
+    }
+  }
+}
+
+@media screen and (min-width:769px) {
+  #group-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .list {
+    margin-left: 10px;
+  }
+
+  .group-date {
+    display: flex;
+    flex-direction: row;
+
+    input {
+      width: 150px;
+      margin-left: 10px;
+    }
+
+    span {
+      margin-left: 10px;
+    }
+  }
+
+  .search-title {
+    color: @color_1;
+    font-size: 28px;
+    margin-top: 20px;
+  }
+
+  .group-location {
+    span {
+      margin-left: 10px;
+    }
+
+    display: flex;
+    flex-direction: row;
+
+    input {
+      width: 320px;
+      margin-left: 10px;
+    }
+  }
+
+  .filter {
+    select {
+      margin-left: 10px;
+    }
+
+    span {
+      margin-left: 10px;
+    }
+  }
+
+  .passagens {
+    width: 30%;
+    background-color: @background_color_3;
+    color: @color_1;
+    font-size: 23px;
+    font-weight: 700;
+  }
+
+  .space {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .btn-search {
+    font-size: 26px;
+    font-weight: 700;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .search-title {
+    display: none;
+  }
+
+  .list {
+    margin-left: 0px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .econometro {
+    display: none;
+  }
+
+  .divDataIda,
+  .divDataVolta {
+    position: relative;
+    background-color: #FFF;
+    border-radius: 3px;
+    border: none;
+    height: 40px;
+    margin-left: 0px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width:374px) {
+  .filter {
+    select {
+      background-color: @background_color_1;
+      width: 70px;
+      border-radius: 3px;
+    }
+  }
+}
+
+.list {
+  margin-left: 0px;
+}
+
+@media screen and (min-width:992px) {
+  .group-date {
+    input {
+      width: 200px;
+    }
+  }
+
+  .group-location {
+    input {
+      width: 440px;
+    }
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .group-date {
+    input {
+      width: 300px;
+    }
+  }
+
+  .list {
+    margin-left: 0px;
+  }
+
+  .group-location {
+    input {
+      width: 530px;
+    }
+  }
+
+  .passagens {
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 769px) {
+
+  .divDataIda,
+  .divDataVolta {
+    position: relative;
+    background-color: #FFF;
+    border-radius: 3px;
+    border: none;
+    height: 40px;
+    margin-left: 0px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .list {
+    margin-left: 0px;
+  }
+
+  .content input {
+    border-radius: 3px;
+    border: none;
+    height: 40px;
+    width: 100%;
+  }
+
+  .divListOrgeim,
+  .divListDestino .list {
+    margin-left: 0px;
+  }
+}
