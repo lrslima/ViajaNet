@@ -59,28 +59,18 @@
                             <span>Data da Ida</span>
 
                             <div class="divDataIda">
-                              <!-- <mat-form-field> -->
                               <input [disabled]="isDisabled" matInput [matDatepicker]="picker">
                               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                               <mat-datepicker #picker></mat-datepicker>
-                              <!-- </mat-form-field> -->
                             </div>
-
-                            <!-- <mat-form-field> -->
-                            <!-- <input matInput [matDatepicker]="picker">
-                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                              <mat-datepicker #picker></mat-datepicker> -->
-                            <!-- </mat-form-field> -->
                           </label>
 
                           <label>
                             <span>Data da Volta</span>
                             <div class="divDataVolta">
-                              <!-- <mat-form-field> -->
                               <input matInput [matDatepicker]="picker2">
                               <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                               <mat-datepicker #picker2></mat-datepicker>
-                              <!-- </mat-form-field> -->
                             </div>
                           </label>
                         </div>
@@ -88,6 +78,7 @@
                           <label>
                             <span>Adultos</span>
                             <select name="" id="">
+                              <option value="1">1 Adulto</option>
                               <option *ngFor="let adulto of listaAdultos" value="adulto" [selected]="0">{{adulto}}
                                 Adulto(s)</option>
                             </select>
@@ -97,6 +88,7 @@
                             <span>Crianças</span>
                             <select name="" id="">
                               <option value="0" selected>Nenhuma</option>
+                              <option value="1">1 criança</option>
                               <option *ngFor="let crianca of listaCriancas" value="crianca">{{crianca}} criança(s)</option>
                             </select>
                           </label>
@@ -105,6 +97,7 @@
                             <span>Bebês</span>
                             <select name="" id="">
                               <option value="0" selected>Nenhuma</option>
+                              <option value="1">1 bebê</option>
                               <option *ngFor="let bebes of listaBebes" value="bebes" [selected]="0">{{bebes}} bebê(s)</option>
                             </select>
                           </label>
